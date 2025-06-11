@@ -26,11 +26,21 @@ class HourlyGlass{
     }
 
     hourlyGlass(){
-      for(let k = 0; k<=3; k++){
-         for(let l = 0; l<=3; l++){
-            
+        let max = -Infinity
+        let matrixes = {i : 0, j: 0}
+      for(let i = 0; i<=3; i++){
+         for(let j = 0; j<=3; j++){
+            const sum = this.matrix[i][j] + this.matrix[i][j+1] + this.matrix[i][j+2] +
+                                  this.matrix[i+1][j+1]
+                            this.matrix[i+2][j] + this.matrix[i+2][j+1] + this.matrix[i+2][j+2];
+
+                            if (sum > max){
+                                max = sum;
+                                matrixes = {i,j}
+                            }
          }
       }
+      return matrixes;
     }
 } 
 
